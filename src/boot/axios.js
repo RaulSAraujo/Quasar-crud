@@ -4,11 +4,9 @@ import axios from 'axios'
 
 const api = axios.create({ baseURL: process.env.BASE_URL })
 
-let token = `${SessionStorage.getItem("tokenPart0")}${SessionStorage.getItem("tokenPart1")}${SessionStorage.getItem("tokenPart2")}${SessionStorage.getItem("tokenPart3")}`
-
 // interceptor para configurar o cabeçalho
 api.interceptors.request.use(config => {
-  config.headers.Authorization = token;
+  config.headers.Authorization = SessionStorage.getItem("token");
   return config;
 });
 

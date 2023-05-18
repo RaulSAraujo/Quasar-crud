@@ -51,21 +51,15 @@ export default defineComponent({
     };
   },
   methods: {
-    onSubmit() {
-      var token =
-        "Bearer 40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8";
-      var numParts = 4;
-      var partSize = Math.ceil(token.length / numParts);
+    async onSubmit() {
+      await SessionStorage.set(
+        "token",
+        "Bearer 40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8"
+      );
 
-      for (var i = 0; i < numParts; i++) {
-        var startIndex = i * partSize;
-        var endIndex = startIndex + partSize;
-        var part = token.substring(startIndex, endIndex);
-
-        SessionStorage.set("tokenPart" + i, part);
-      }
-
-      this.$router.push({ name: "home" });
+      setTimeout(() => {
+        this.$router.push({ name: "home" });
+      }, 500);
     },
   },
 });

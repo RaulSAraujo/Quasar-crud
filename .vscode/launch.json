@@ -15,6 +15,15 @@
         "sourceMapPathOverrides": {
           "webpack://package-name/./src/*": "${webRoot}/*"
         }
-      }
+      },
+      {
+        "type": "cordova",
+        "request": "launch",
+        "name": "Run android on device",
+        "platform": "android",
+        "target": "device",
+        "sourceMaps": true,
+        "cwd": ""
+      },
     ]
 }
